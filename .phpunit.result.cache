@@ -1,0 +1,1 @@
+{"version":1,"defects":[],"times":{"Tests\\Domain\\PhoneTest::shouldntCreatePhoneIfLengthIsLowerThanTen":0.002,"Tests\\Domain\\PhoneTest::shouldntCreatePhoneIfLengthIsGraterThanEleven":0}}
