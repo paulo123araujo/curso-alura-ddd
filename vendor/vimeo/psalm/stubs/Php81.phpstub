@@ -1,6 +1,0 @@
-<?php
-
-interface UnitEnum {
-    /** @return non-empty-list<static> */
-    public static function cases(): array;
-}
