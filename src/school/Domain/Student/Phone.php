@@ -49,7 +49,11 @@ class Phone
 
     private function phoneHasInvalidFormat(string $phone): bool
     {
-        return !preg_match('/^\([\d]{2}\)\s[\d]{4,5}\-[\d]{4}$/', $phone);
+        if (!preg_match('/^\([\d]{2}\)\s[\d]{4,5}\-[\d]{4}$/', $phone)) {
+            return true;
+        }
+
+        return false;
     }
 
     private function phoneHasWrongLength($phone): bool

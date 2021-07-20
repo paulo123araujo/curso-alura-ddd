@@ -33,13 +33,14 @@ class CPF
             throw new DomainException('This CPF is invalid.');
         }
 
-      // Faz o calculo para validar o CPF
+        $cpf = str_split($cpf);
+
         for ($t = 9; $t < 11; $t++) {
             for ($d = 0, $c = 0; $c < $t; $c++) {
-                $d += $cpf[$c] * (($t + 1) - $c);
+                $d += intval($cpf[$c]) * (($t + 1) - $c);
             }
             $d = ((10 * $d) % 11) % 10;
-            if ($cpf[$c] != $d) {
+            if (intval($cpf[$c]) != $d) {
                 throw new DomainException('This CPF is invalid.');
             }
         }
@@ -47,7 +48,10 @@ class CPF
 
     private function isRepeatedDigits(string $cpf): bool
     {
-        return preg_match('/(\d)\1{10}/', $cpf);
+        if (!preg_match('/(\d)\1{10}/', $cpf)) {
+            return true;
+        }
+        return false;
     }
 
     private function isDigitCountWrong(string $cpf): bool
