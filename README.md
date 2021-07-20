@@ -9,7 +9,15 @@ Vou criando issues sobre as proxímas features e documentando o máximo possíve
 ### How to contribute
 
 No projeto estou seguindo o padrão git-flow para as branches e pull requests.
-Crie um PR para uma issue, documente bem.
+Crie um PR para uma issue especifica, documente bem.
+
+### Critérios de pronto
+
+Para um PR ser aprovado deve:
+- ter testes
+- estar utilizando a [PSR1](https://www.php-fig.org/psr/psr-1/) e [PSR12](https://www.php-fig.org/psr/psr-12/)
+- estar seguindo um padrão do ddd
+- passar no github workflow (psalm, phpcs, phpunit)
 
 ### How to run
 
