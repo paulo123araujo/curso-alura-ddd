@@ -14,6 +14,7 @@ class Student
     /** @var Phone[] $phones */
     private array $phones = [];
     private DateTimeInterface $registeredAt;
+    private string $password;
 
     public function __construct(
         private CPF $cpf,
@@ -34,5 +35,26 @@ class Student
         }
 
         $this->phones[] = $phone;
+    }
+
+    /** @return string[] */
+    public function phones(): array
+    {
+        return array_map(fn ($phone) => (string) $phone, $this->phones);
+    }
+
+    public function definePassword(string $encryptedPassword): void
+    {
+        $this->password = $encryptedPassword;
+    }
+
+    public function password(): string
+    {
+        return $this->password;
+    }
+
+    public function registeredAt(): DateTimeInterface
+    {
+        return $this->registeredAt;
     }
 }
