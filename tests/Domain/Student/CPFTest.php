@@ -1,5 +1,8 @@
 <?php
 
+namespace Tests\Domain\Student;
+
+use DomainException;
 use PHPUnit\Framework\TestCase;
 use School\Domain\Student\CPF;
 

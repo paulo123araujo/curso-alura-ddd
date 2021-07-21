@@ -13,15 +13,14 @@ class Student
 
     /** @var Phone[] $phones */
     private array $phones = [];
-    private DateTimeInterface $registeredAt;
     private string $password;
 
     public function __construct(
         private CPF $cpf,
         private string $name,
         private Email $email,
+        private DateTimeInterface $registeredAt = new DateTimeImmutable()
     ) {
-        $this->registeredAt = new DateTimeImmutable();
     }
 
     public function addPhone(Phone $phone): void

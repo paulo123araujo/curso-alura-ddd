@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Domain;
+namespace Tests\Domain\Student;
 
 use DomainException;
 use PHPUnit\Framework\TestCase;
