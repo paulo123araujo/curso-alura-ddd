@@ -74,8 +74,10 @@ class Phone
 
     public function number(): string
     {
-        $numberWithDash = substr_replace($this->number, '-', -5);
-        return sprintf('(%s) %s', $this->ddd, $numberWithDash);
+        $digitCount = strlen($this->number);
+        $finalDigits = substr($this->number, -4, 4);
+        $beginningDigits = substr($this->number,0, ($digitCount - 4));
+        return sprintf('(%s) %s-%s', $this->ddd, $beginningDigits, $finalDigits);
     }
 
     public function __toString(): string

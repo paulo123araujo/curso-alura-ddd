@@ -54,4 +54,36 @@ class PhoneTest extends TestCase
 
         Phone::create($number);
     }
+
+    public function validPhones(): array
+    {
+        return [
+            ['(14) 99811-6746'],
+            ['(11) 3333-4444'],
+            ['(09) 98167-4545']
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider validPhones
+     */
+    public function shouldCreateCorrectlyWithCorrectPhone(string $phone)
+    {
+        $tested = Phone::create($phone);
+        $this->assertInstanceOf(Phone::class, $tested);
+        $this->assertEquals($phone, (string) $tested);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldReturnCorrectValues()
+    {
+        $phone = '(11) 3333-4444';
+        $tested = Phone::create($phone);
+        $this->assertEquals('11', $tested->DDD());
+        $this->assertEquals('33334444', $tested->numberWithoutDDD());
+        $this->assertEquals($phone, $tested->number());
+    }
 }
