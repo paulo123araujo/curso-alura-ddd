@@ -6,7 +6,6 @@ namespace School\Domain\Student;
 
 use DateTimeImmutable;
 use DateTimeInterface;
-use DomainException;
 
 class Student
 {
@@ -32,11 +31,11 @@ class Student
     public function addPhone(Phone $phone): void
     {
         if (count($this->phones) === 2) {
-            throw new DomainException('You can\'t add more phones.');
+            throw new PhoneCountExceeded();
         }
 
-        if (in_array($phone, $this->phones)) {
-            throw new DomainException('Phone number already exists.');
+        if (in_array((string) $phone, $this->phones())) {
+            throw new PhoneAlreadyExists();
         }
 
         $this->phones[] = $phone;
