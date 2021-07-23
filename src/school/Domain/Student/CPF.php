@@ -48,10 +48,10 @@ class CPF
 
     private function isRepeatedDigits(string $cpf): bool
     {
-        if (!preg_match('/(\d)\1{10}/', $cpf)) {
-            return true;
+        if (!preg_match('/(\d)\1{11}/', $cpf)) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     private function isDigitCountWrong(string $cpf): bool

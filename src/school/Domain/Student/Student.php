@@ -14,13 +14,19 @@ class Student
     /** @var Phone[] $phones */
     private array $phones = [];
     private string $password;
+    private DateTimeInterface $registeredAt;
 
     public function __construct(
         private CPF $cpf,
         private string $name,
         private Email $email,
-        private DateTimeInterface $registeredAt = new DateTimeImmutable()
+        DateTimeInterface|null $registeredAt = null
     ) {
+        if (is_null($registeredAt)) {
+            $registeredAt = new DateTimeImmutable();
+        }
+
+        $this->registeredAt = $registeredAt;
     }
 
     public function addPhone(Phone $phone): void
@@ -34,6 +40,21 @@ class Student
         }
 
         $this->phones[] = $phone;
+    }
+
+    public function cpf(): string
+    {
+        return (string) $this->cpf;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function email(): string
+    {
+        return (string) $this->email;
     }
 
     /** @return string[] */

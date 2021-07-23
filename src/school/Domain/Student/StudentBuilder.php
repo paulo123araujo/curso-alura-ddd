@@ -4,23 +4,26 @@ declare(strict_types=1);
 
 namespace School\Domain\Student;
 
-class StudentFactory
+class StudentBuilder
 {
-    private Student $student;
+    /**
+     * @var Student $student
+     */
+    private $student;
 
-    public function default(string $name, string $cpf, string $email): StudentFactory
+    public function default(string $name, string $cpf, string $email): StudentBuilder
     {
         $this->student = new Student(CPF::create($cpf), $name, Email::create($email));
         return $this;
     }
 
-    public function withPassword(string $encryptedPassword): StudentFactory
+    public function withPassword(string $encryptedPassword): StudentBuilder
     {
         $this->student->definePassword($encryptedPassword);
         return $this;
     }
 
-    public function withPhone(string $phone): StudentFactory
+    public function withPhone(string $phone): StudentBuilder
     {
         $this->student->addPhone(Phone::create($phone));
         return $this;
